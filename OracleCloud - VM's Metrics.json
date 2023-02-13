@@ -1,0 +1,1163 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ORACLE_CLOUD INFRASTRUCTURE METRICS",
+      "label": "Oracle Cloud Infrastructure Metrics",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "oci-metrics-datasource",
+      "pluginName": "Oracle Cloud Infrastructure Metrics"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.3.1"
+    },
+    {
+      "type": "datasource",
+      "id": "oci-metrics-datasource",
+      "name": "Oracle Cloud Infrastructure Metrics",
+      "version": "3.0.6"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 0,
+        "y": 0
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "$compartment",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "$dimensionKey",
+              "operator": "=",
+              "value": "$dimensionValue"
+            }
+          ],
+          "legendFormat": "{{metric}} - {{resourceDisplayName}}",
+          "metric": "CpuUtilization",
+          "namespace": "$namespace",
+          "refId": "A",
+          "region": "$region",
+          "resolution": "auto",
+          "resourcegroup": "$resourcegroup",
+          "window": "auto"
+        }
+      ],
+      "title": "CPU - $dimensionValue",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 27,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 6,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 10,
+        "x": 3,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "$compartment",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "$dimensionKey",
+              "operator": "=",
+              "value": "$dimensionValue"
+            }
+          ],
+          "legendFormat": "{{metric}} - {{resourceDisplayName}}",
+          "metric": "CpuUtilization",
+          "namespace": "$namespace",
+          "refId": "A",
+          "region": "$region",
+          "resolution": "auto",
+          "resourcegroup": "$resourcegroup",
+          "window": "auto"
+        }
+      ],
+      "title": "CPU - $dimensionValue",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 27,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 6,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 11,
+        "x": 13,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "$compartment",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "$dimensionKey",
+              "operator": "=",
+              "value": "$dimensionValue"
+            }
+          ],
+          "legendFormat": "{{metric}} - {{resourceDisplayName}}",
+          "metric": "LoadAverage",
+          "namespace": "$namespace",
+          "refId": "A",
+          "region": "$region",
+          "resolution": "auto",
+          "resourcegroup": "$resourcegroup",
+          "window": "auto"
+        }
+      ],
+      "title": "LoadAverage $dimensionValue",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 0,
+        "y": 7
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "$compartment",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "$dimensionKey",
+              "operator": "=",
+              "value": "$dimensionValue"
+            }
+          ],
+          "legendFormat": "{{metric}} - {{resourceDisplayName}}",
+          "metric": "MemoryUtilization",
+          "namespace": "$namespace",
+          "refId": "A",
+          "region": "$region",
+          "resolution": "auto",
+          "resourcegroup": "$resourcegroup",
+          "window": "auto"
+        }
+      ],
+      "title": "Memória- $dimensionValue",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds",
+            "seriesBy": "last"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 27,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 6,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 21,
+        "x": 3,
+        "y": 7
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "$compartment",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "$dimensionKey",
+              "operator": "=",
+              "value": "$dimensionValue"
+            }
+          ],
+          "legendFormat": "{{metric}} - {{resourceDisplayName}}",
+          "metric": "MemoryUtilization",
+          "namespace": "$namespace",
+          "refId": "A",
+          "region": "$region",
+          "resolution": "auto",
+          "resourcegroup": "$resourcegroup",
+          "window": "auto"
+        }
+      ],
+      "title": "Memoria $dimensionValue",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 18,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "rps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "rate()",
+          "compartment": "$compartment",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "resourceDisplayName",
+              "operator": "=",
+              "value": "$dimensionValue"
+            }
+          ],
+          "legendFormat": "{{metric}} - {{resourceDisplayName}}",
+          "metric": "DiskIopsRead",
+          "namespace": "$namespace",
+          "refId": "A",
+          "region": "$region",
+          "resolution": "auto",
+          "resourcegroup": "$resourcegroup",
+          "window": "1m"
+        }
+      ],
+      "title": "Disk Read I/O",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "wps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "rate()",
+          "compartment": "$compartment",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "resourceDisplayName",
+              "operator": "=",
+              "value": "$dimensionValue"
+            }
+          ],
+          "legendFormat": "{{metric}} - {{resourceDisplayName}}",
+          "metric": "DiskIopsWritten",
+          "namespace": "$namespace",
+          "refId": "A",
+          "region": "$region",
+          "resolution": "auto",
+          "resourcegroup": "$resourcegroup",
+          "window": "1m"
+        }
+      ],
+      "title": "Disk Read I/O",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 22
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "rate()",
+          "compartment": "$compartment",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "resourceDisplayName",
+              "operator": "=",
+              "value": "$dimensionValue"
+            }
+          ],
+          "legendFormat": "{{metric}} - {{resourceDisplayName}}",
+          "metric": "NetworksBytesIn",
+          "namespace": "$namespace",
+          "refId": "A",
+          "region": "$region",
+          "resolution": "auto",
+          "resourcegroup": "$resourcegroup",
+          "window": "1m"
+        }
+      ],
+      "title": "Network Receive Bytes",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 22
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "rate()",
+          "compartment": "$compartment",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "resourceDisplayName",
+              "operator": "=",
+              "value": "$dimensionValue"
+            }
+          ],
+          "legendFormat": "{{metric}} - {{resourceDisplayName}}",
+          "metric": "NetworksBytesOut",
+          "namespace": "$namespace",
+          "refId": "A",
+          "region": "$region",
+          "resolution": "auto",
+          "resourcegroup": "$resourcegroup",
+          "window": "1m"
+        }
+      ],
+      "title": "Network Transmit Bytes",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "oci-metrics-datasource",
+          "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+        },
+        "definition": "regions()",
+        "hide": 2,
+        "includeAll": false,
+        "label": "region",
+        "multi": false,
+        "name": "region",
+        "options": [],
+        "query": "regions()",
+        "refresh": 1,
+        "regex": "/sa-saopaulo-1/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "oci-metrics-datasource",
+          "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+        },
+        "definition": "compartments()",
+        "hide": 0,
+        "includeAll": false,
+        "label": "compartment",
+        "multi": false,
+        "name": "compartment",
+        "options": [],
+        "query": "compartments()",
+        "refresh": 1,
+        "regex": "//",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "oci-metrics-datasource",
+          "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+        },
+        "definition": "namespaces($region,$compartment)",
+        "hide": 2,
+        "includeAll": false,
+        "label": "namespace",
+        "multi": false,
+        "name": "namespace",
+        "options": [],
+        "query": "namespaces($region,$compartment)",
+        "refresh": 1,
+        "regex": "/oci_computeagent/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "oci-metrics-datasource",
+          "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+        },
+        "definition": "resourcegroups($region, $compartment, $namespace)",
+        "hide": 2,
+        "includeAll": false,
+        "label": "resourcegroup",
+        "multi": false,
+        "name": "resourcegroup",
+        "options": [],
+        "query": "resourcegroups($region, $compartment, $namespace)",
+        "refresh": 1,
+        "regex": "/NoResourceGroup/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "oci-metrics-datasource",
+          "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+        },
+        "definition": "metrics($region,$compartment, $namespace, $resourcegroup)",
+        "description": "",
+        "hide": 2,
+        "includeAll": false,
+        "label": "metric",
+        "multi": false,
+        "name": "metric",
+        "options": [],
+        "query": "metrics($region,$compartment, $namespace, $resourcegroup)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "oci-metrics-datasource",
+          "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+        },
+        "definition": "dimensions($region, $compartment, $namespace, $metric, $resourcegroup)",
+        "hide": 2,
+        "includeAll": false,
+        "label": "dimensionKey",
+        "multi": false,
+        "name": "dimensionKey",
+        "options": [],
+        "query": "dimensions($region, $compartment, $namespace, $metric, $resourcegroup)",
+        "refresh": 1,
+        "regex": "/resourceDisplayName/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "oci-metrics-datasource",
+          "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+        },
+        "definition": "dimensionOptions($region,$compartment,$namespace,$metric,$dimensionKey,$resourcegroup)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "VM",
+        "multi": false,
+        "name": "dimensionValue",
+        "options": [],
+        "query": "dimensionOptions($region,$compartment,$namespace,$metric,$dimensionKey,$resourcegroup)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "OracleCloud - VM's Metrics",
+  "uid": "TESTE2",
+  "version": 2,
+  "weekStart": ""
+}

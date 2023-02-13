@@ -1,0 +1,1380 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ORACLE_CLOUD INFRASTRUCTURE METRICS",
+      "label": "Oracle Cloud Infrastructure Metrics",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "oci-metrics-datasource",
+      "pluginName": "Oracle Cloud Infrastructure Metrics"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.3.1"
+    },
+    {
+      "type": "datasource",
+      "id": "oci-metrics-datasource",
+      "name": "Oracle Cloud Infrastructure Metrics",
+      "version": "3.0.6"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 13,
+      "panels": [],
+      "title": "Cluster",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 0,
+                  "text": "OFF"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "ON"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 0,
+        "y": 1
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [],
+          "legendFormat": "{{resourceName}}",
+          "metric": "NodeStatus",
+          "namespace": "oci_database_cluster",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "auto"
+        }
+      ],
+      "title": "Status Cluster",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 2,
+        "y": 1
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [],
+          "legendFormat": "{{resourceName}}",
+          "metric": "OcpusAllocated",
+          "namespace": "oci_database_cluster",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "auto"
+        }
+      ],
+      "title": "OPCU'S",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 4,
+        "y": 1
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [],
+          "legendFormat": "{{resourceName}}",
+          "metric": "CpuUtilization",
+          "namespace": "oci_database_cluster",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "auto"
+        }
+      ],
+      "title": "CPU - Cluster",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 6,
+        "y": 1
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [],
+          "legendFormat": "{{resourceName}}",
+          "metric": "MemoryUtilization",
+          "namespace": "oci_database_cluster",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "auto"
+        }
+      ],
+      "title": "Memória - Cluster",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 20
+              },
+              {
+                "color": "red",
+                "value": 60
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 8,
+        "y": 1
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [],
+          "legendFormat": "{{resourceName}}",
+          "metric": "SwapUtilization",
+          "namespace": "oci_database_cluster",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "auto"
+        }
+      ],
+      "title": "Swap - Cluster",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 10,
+        "y": 1
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "filesystemName",
+              "operator": "=",
+              "value": "select value"
+            }
+          ],
+          "legendFormat": "{{filesystemName}}",
+          "metric": "FilesystemUtilization",
+          "namespace": "oci_database_cluster",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "auto"
+        }
+      ],
+      "title": "FileSystem - Cluster",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "diskgroupName",
+              "operator": "=",
+              "value": "select value"
+            }
+          ],
+          "legendFormat": "{{diskgroupName}}",
+          "metric": "ASMDiskgroupUtilization",
+          "namespace": "oci_database_cluster",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "auto"
+        }
+      ],
+      "title": "ASM Diskgroup - Cluster",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 4
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [],
+          "legendFormat": "{{resourceName}}",
+          "metric": "CpuUtilization",
+          "namespace": "oci_database_cluster",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "auto"
+        }
+      ],
+      "title": "CPU - Cluster",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 8
+              },
+              {
+                "color": "red",
+                "value": 12
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 8,
+        "y": 4
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [],
+          "legendFormat": "{{resourceName}}",
+          "metric": "LoadAverage",
+          "namespace": "oci_database_cluster",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "auto"
+        }
+      ],
+      "title": "CPU Load - Cluster",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 16,
+        "y": 4
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "resourceName",
+              "operator": "=",
+              "value": "usdb01"
+            }
+          ],
+          "legendFormat": "{{resourceName}} - Memoria",
+          "metric": "MemoryUtilization",
+          "namespace": "oci_database_cluster",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "auto"
+        },
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [
+            {
+              "key": "resourceName",
+              "operator": "=",
+              "value": "usdb01"
+            }
+          ],
+          "hide": false,
+          "legendFormat": "{{resourceName}} - Swap",
+          "metric": "SwapUtilization",
+          "namespace": "oci_database_cluster",
+          "refId": "B",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "auto"
+        }
+      ],
+      "title": "Memoria - Cluster",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "usdb01 - Espaço alocado"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "usdb01 - Espaço utilizado"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 0,
+        "y": 13
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [],
+          "legendFormat": "{{resourceName}} - Espaço utilizado",
+          "metric": "StorageUsed",
+          "namespace": "oci_database",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "1h"
+        },
+        {
+          "aggregation": "mean()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [],
+          "hide": false,
+          "legendFormat": "{{resourceName}} - Espaço alocado",
+          "metric": "StorageAllocated",
+          "namespace": "oci_database",
+          "refId": "B",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "1h"
+        }
+      ],
+      "title": "Espaço utilizado / alocado",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 8,
+        "y": 13
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "sum()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [],
+          "legendFormat": "{{resourceName_database}}",
+          "metric": "CurrentLogons",
+          "namespace": "oci_database",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "1m"
+        }
+      ],
+      "title": "Conexões abertas",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "oci-metrics-datasource",
+        "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 16,
+        "y": 13
+      },
+      "id": 16,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "aggregation": "sum()",
+          "compartment": "ocid1.compartment.oc1..aaaaaaaatt4bg3ewm53bcupgxqozrxiwwjz5adejtv3t7nxo2calndlkdakq",
+          "datasource": {
+            "type": "oci-metrics-datasource",
+            "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
+          },
+          "dimensions": [],
+          "legendFormat": "{{resourceName_database}}",
+          "metric": "TransactionCount",
+          "namespace": "oci_database",
+          "refId": "A",
+          "region": "sa-saopaulo-1",
+          "resolution": "auto",
+          "resourcegroup": "NoResourceGroup",
+          "window": "1m"
+        }
+      ],
+      "title": "Transações efetuadas",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "OracleCloud - Oracle 19 Prod",
+  "uid": "suE5kI04k",
+  "version": 23,
+  "weekStart": ""
+}
