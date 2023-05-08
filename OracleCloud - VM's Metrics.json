@@ -15,13 +15,13 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.3.1"
+      "version": "9.4.1"
     },
     {
       "type": "datasource",
       "id": "oci-metrics-datasource",
       "name": "Oracle Cloud Infrastructure Metrics",
-      "version": "3.0.6"
+      "version": "4.0.1"
     },
     {
       "type": "panel",
@@ -119,7 +119,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.1",
+      "pluginVersion": "9.4.1",
       "targets": [
         {
           "aggregation": "mean()",
@@ -141,7 +141,9 @@
           "refId": "A",
           "region": "$region",
           "resolution": "auto",
-          "resourcegroup": "$resourcegroup",
+          "resourcegroup": "select resource group",
+          "tenancy": "select tenancy",
+          "tenancymode": "single",
           "window": "auto"
         }
       ],
@@ -250,7 +252,9 @@
           "refId": "A",
           "region": "$region",
           "resolution": "auto",
-          "resourcegroup": "$resourcegroup",
+          "resourcegroup": "select resource group",
+          "tenancy": "select tenancy",
+          "tenancymode": "single",
           "window": "auto"
         }
       ],
@@ -360,7 +364,9 @@
           "refId": "A",
           "region": "$region",
           "resolution": "auto",
-          "resourcegroup": "$resourcegroup",
+          "resourcegroup": "select resource group",
+          "tenancy": "select tenancy",
+          "tenancymode": "single",
           "window": "auto"
         }
       ],
@@ -380,7 +386,7 @@
           },
           "mappings": [],
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
@@ -406,12 +412,12 @@
         "x": 0,
         "y": 7
       },
-      "id": 10,
+      "id": 14,
       "options": {
         "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
-        "orientation": "auto",
+        "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -421,7 +427,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.1",
+      "pluginVersion": "9.4.1",
       "targets": [
         {
           "aggregation": "mean()",
@@ -443,11 +449,13 @@
           "refId": "A",
           "region": "$region",
           "resolution": "auto",
-          "resourcegroup": "$resourcegroup",
+          "resourcegroup": "select resource group",
+          "tenancy": "select tenancy",
+          "tenancymode": "single",
           "window": "auto"
         }
       ],
-      "title": "Memória- $dimensionValue",
+      "title": "Memoria - $dimensionValue",
       "type": "stat"
     },
     {
@@ -558,6 +566,8 @@
           "region": "$region",
           "resolution": "auto",
           "resourcegroup": "$resourcegroup",
+          "tenancy": "select tenancy",
+          "tenancymode": "single",
           "window": "auto"
         }
       ],
@@ -647,7 +657,7 @@
       },
       "targets": [
         {
-          "aggregation": "rate()",
+          "aggregation": "mean()",
           "compartment": "$compartment",
           "datasource": {
             "type": "oci-metrics-datasource",
@@ -655,7 +665,7 @@
           },
           "dimensions": [
             {
-              "key": "resourceDisplayName",
+              "key": "$dimensionKey",
               "operator": "=",
               "value": "$dimensionValue"
             }
@@ -666,8 +676,10 @@
           "refId": "A",
           "region": "$region",
           "resolution": "auto",
-          "resourcegroup": "$resourcegroup",
-          "window": "1m"
+          "resourcegroup": "select resource group",
+          "tenancy": "select tenancy",
+          "tenancymode": "single",
+          "window": "auto"
         }
       ],
       "title": "Disk Read I/O",
@@ -678,6 +690,7 @@
         "type": "oci-metrics-datasource",
         "uid": "${DS_ORACLE_CLOUD INFRASTRUCTURE METRICS}"
       },
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -756,7 +769,7 @@
       },
       "targets": [
         {
-          "aggregation": "rate()",
+          "aggregation": "mean()",
           "compartment": "$compartment",
           "datasource": {
             "type": "oci-metrics-datasource",
@@ -764,7 +777,7 @@
           },
           "dimensions": [
             {
-              "key": "resourceDisplayName",
+              "key": "$dimensionKey",
               "operator": "=",
               "value": "$dimensionValue"
             }
@@ -775,11 +788,13 @@
           "refId": "A",
           "region": "$region",
           "resolution": "auto",
-          "resourcegroup": "$resourcegroup",
-          "window": "1m"
+          "resourcegroup": "select resource group",
+          "tenancy": "select tenancy",
+          "tenancymode": "single",
+          "window": "auto"
         }
       ],
-      "title": "Disk Read I/O",
+      "title": "Disk Written I/O",
       "type": "timeseries"
     },
     {
@@ -865,7 +880,7 @@
       },
       "targets": [
         {
-          "aggregation": "rate()",
+          "aggregation": "mean()",
           "compartment": "$compartment",
           "datasource": {
             "type": "oci-metrics-datasource",
@@ -873,7 +888,7 @@
           },
           "dimensions": [
             {
-              "key": "resourceDisplayName",
+              "key": "$dimensionKey",
               "operator": "=",
               "value": "$dimensionValue"
             }
@@ -885,7 +900,9 @@
           "region": "$region",
           "resolution": "auto",
           "resourcegroup": "$resourcegroup",
-          "window": "1m"
+          "tenancy": "select tenancy",
+          "tenancymode": "single",
+          "window": "auto"
         }
       ],
       "title": "Network Receive Bytes",
@@ -955,7 +972,7 @@
         "x": 12,
         "y": 22
       },
-      "id": 8,
+      "id": 15,
       "options": {
         "legend": {
           "calcs": [
@@ -974,7 +991,7 @@
       },
       "targets": [
         {
-          "aggregation": "rate()",
+          "aggregation": "mean()",
           "compartment": "$compartment",
           "datasource": {
             "type": "oci-metrics-datasource",
@@ -982,7 +999,7 @@
           },
           "dimensions": [
             {
-              "key": "resourceDisplayName",
+              "key": "$dimensionKey",
               "operator": "=",
               "value": "$dimensionValue"
             }
@@ -994,19 +1011,40 @@
           "region": "$region",
           "resolution": "auto",
           "resourcegroup": "$resourcegroup",
-          "window": "1m"
+          "tenancy": "select tenancy",
+          "tenancymode": "single",
+          "window": "auto"
         }
       ],
       "title": "Network Transmit Bytes",
       "type": "timeseries"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 37,
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Oracle Cloud Infrastructure Metrics",
+          "value": "Oracle Cloud Infrastructure Metrics"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Datasource",
+        "multi": false,
+        "name": "Datasource",
+        "options": [],
+        "query": "oci-metrics-datasource",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
       {
         "current": {},
         "datasource": {
@@ -1157,7 +1195,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "OracleCloud - VM's Metrics",
-  "uid": "TESTE2",
-  "version": 2,
+  "uid": "q2seuMAVz",
+  "version": 39,
   "weekStart": ""
 }
